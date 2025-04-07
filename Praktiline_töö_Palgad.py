@@ -13,6 +13,8 @@ print("MENU\n",
       "7. Teha palgaotsing isiku nime järgi. Pange tähele, et nimed võivad korduda;\n",
       "11. Arvutage palk, mille inimene saab kätte pärast tulumaksu arvestamist;\n",
       "12. Sorteeri nime järgi (kasutajale võib anda valiku: A-st Z-ni või Z-st A-ni);\n",
+      "13. Leida need, kes saavad alla keskmise palka, ja eemaldada nad nimekirjadest;\n",
+      "14. Muuda nimekirju nii, et inimeste nimekirjas kirjutatakse nimed suure algustähega, palkade kohta int formaadis;\n",
       "20. Väljumine.")
 while 1:
     try:
@@ -35,8 +37,14 @@ while 1:
             valik11(palgad, inimesed)
         elif valik==12:
             valik12(palgad, inimesed)
+        elif valik==13:
+            valik13(palgad, inimesed)
+        elif valik==14:
+            valik14(palgad, inimesed)
         elif valik==20:
             break
+        else:
+            print("Ввебире от 1 до 20!")
     except ValueError:
         print("valik on arv!")
    

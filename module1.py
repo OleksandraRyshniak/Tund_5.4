@@ -1,15 +1,17 @@
 from multiprocessing import Value
-
-
 p=[]
 i=[]
 
 def valik1(p:list, i:list):
-    """
+    """Uute inimeste lisamine
+    Funktsioon lisab nimed ja nende palgad.
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     while True:
         try:
-            kogus=int(input("Сколько людей ты хочешь добавить: "))
+            kogus=int(input("Kui palju inimesi soovite lisada: "))
             break
         except ValueError:
             print("Kogus on arv!")
@@ -19,19 +21,23 @@ def valik1(p:list, i:list):
                 nimi=input("Sisesta nimi: ")
                 if nimi.isalpha():break
             except:
-                print("Имя должно состоять только из букв!")
+                print("Nimi peaks koosnema ainult tähtedest!")
         while True:
              try:
-                palk=float(input("Введите его зарплату: "))
+                palk=float(input("Sisesta tema palk: "))
                 break
              except ValueError:
                 print("Palk on arv!")
-    p.append(palk)
-    i.append(nimi)
-    print("Человек добавлен!")
+        p.append(palk)
+        i.append(nimi)
+        print("Inimene lisatud!")
 
 def valik2(p:list, i:list):
-    """
+    """Isiku eemaldamine nimekirjast
+    Funktsioon eemaldab isiku ja tema palga nimekirjadest.
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     while 1:
         try:
@@ -40,19 +46,23 @@ def valik2(p:list, i:list):
                 if nimi in i:
                     break
                 else:
-                    print("Имени нет в списке!(имя должно быть в списке)")
+                    print("Nime ei ole nimekirjas!")
         except:
-            print("Имя лоджно состоять из букв!")
+            print("Nimi peab koosnema tähtedest!")
     k=i.count(nimi)
     if k>0:
         for j in range(k):
             ind=i.index(nimi)
             i.pop(ind)
             i.pop(ind)
-            print("Имя удалено из списка")
+            print("Nimekirjast eemaldatud nimi")
 
 def valik3(p:list, i:list):
-    """
+    """Suurim palk
+    Funktsioon näitab kõrgeimat palka ja seda, kes seda saab.
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     suurim=max(p)
     print(f"Suurim palk on {suurim}")
@@ -64,7 +74,11 @@ def valik3(p:list, i:list):
         ind+=1
 
 def valik4(p:list, i:list):
-    """
+    """Väikseim palk
+    Funktsioon näitab väikseimat palka ja seda, kes seda saab.
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     väiksem=min(p)
     print(f"Väiksem palk on {väiksem}")
@@ -76,18 +90,30 @@ def valik4(p:list, i:list):
         ind+=1
 
 def valik5(p:list, i:list):
+    """Korraldada palgad
+    Funktsioon korraldab palgad kahanevas ja kasvavas järjekorras (kasutaja valib)
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
-    """
-    v=input("Vali märk: > (kasvav) või < (kahanev)")
-    for n in range(0, len(i)):
-        for m in range(n, len(i)):
-            if eval (str(p[n])+v+str(p[m])):
-                p[n],p[m]=p[m],p[n]
-                i[n],i[m]=i[m],i[n]
-    print(i, p)
+    while True:
+        v=input("Vali märk: > (kasvav) või < (kahanev)")
+        if v==">" or v=="<":
+            for n in range(0, len(i)):
+                for m in range(n, len(i)):
+                    if eval (str(p[n])+v+str(p[m])):
+                        p[n],p[m]=p[m],p[n]
+                        i[n],i[m]=i[m],i[n]
+            print(i, p)
+        else:
+            print("Valige ainult > või <")
 
 def valik6(p:list, i:list):
-    """
+    """Kes saab sama palka
+    Funktsioon näitab, kes saab sama palka ja kui palju selliseid inimesi on
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     hulk=set(p)
     print(hulk)
@@ -102,7 +128,11 @@ def valik6(p:list, i:list):
                 ind+=1
 
 def valik12(p:list, i:list):
-    """
+    """Korraldage nimed
+    Funktsioon järjestab nimed kasvavas või kahanevas järjekorras (kasutaja valib).
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     while 1:
         try:
@@ -120,7 +150,11 @@ def valik12(p:list, i:list):
         print(list_sort[n])
 
 def valik7(p:list, i:list):
-    """
+    """Palga otsimine isiku nime järgi
+    Funktsioon otsib palku kasutaja poolt sisestatud nime järgi.
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     while True:
         try:
@@ -128,7 +162,7 @@ def valik7(p:list, i:list):
             if nimi.isalpha():
                 break
         except:
-            print("Имя должно быть из букв!")
+            print("Nimi peaks koosnema tähtedest!")
     k=i.count(nimi)
     if k>0:
         for ind in range(len(i)):
@@ -136,7 +170,11 @@ def valik7(p:list, i:list):
                 print(i[ind], p[ind])
 
 def valik11(p:list, i:list):
-    """
+    """Kättesaadav palk
+    Funktsioon arvutab palga ilma tulumaksuta
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
     tulu=0.20 #20%
     for n in range(0, len(p)):
@@ -147,14 +185,35 @@ def valik11(p:list, i:list):
             print(f"{i[n]}: {p[n]}")
 
 def valik13(p:list, i:list):
+    """Funktsioon otsib need, kes saavad keskmisest madalamat palka,
+   ja eemaldab nad nimekirjast.
+    :param list palgad
+    :param list inimesed
+    :rtype: None
     """
-    """
+    summ=0
     kogus=len(p)
     for n in range(0,len(p)):
         summ+=p[n]
     keskmine=summ/kogus
-    for m in range(0,len(p)):
+    m=len(p)-1
+    while m>=0:
         if p[m]<keskmine:
-            i.pop(i[m])
-            p.pop(p[m])
-            print(i[m],":", p[m])
+            i.pop(m)
+            p.pop(m)
+        m-=1
+    for j in range(0,len(i)):
+        print(f"{i[j]} : {p[j]}")
+
+def valik14(p:list, i:list):
+    """Nimekirjade redigeerimine
+    Funktsioon redigeerib nimekirju nii, et inimeste nimekirjas on nimed suurtähtedega, palgad int-formaadis.
+    :param list palgad
+    :param list inimesed
+    :rtype: None
+    """
+    palk=list(map(int,p))
+    for n in range (0, len(i)):
+        i[n].capitalize()
+    for j in range (0, len(p)):
+        print(f"{i[j]} : {palk[j]}")
