@@ -9,12 +9,16 @@ print("MENU\n",
       "3. Leida kes saab kätte suurim palk;\n",
       "4. Leida kes saab kätte kõige väiksem palk ja milline ta on;\n",
       "5. Järjestada palgad kasvavas ja kahanevas järjekorras koos nimedega;\n",
+      "6. Teada saada, kes saavad võrdset palka, leida, kui palju neid on ja kuvada nende andmed ekraanile;\n",
+      "7. Teha palgaotsing isiku nime järgi. Pange tähele, et nimed võivad korduda;\n",
+      "11. Arvutage palk, mille inimene saab kätte pärast tulumaksu arvestamist;\n",
+      "12. Sorteeri nime järgi (kasutajale võib anda valiku: A-st Z-ni või Z-st A-ni);\n",
       "20. Väljumine.")
 while 1:
     try:
         valik=int(input("Valik: "))
         if valik==1:
-            lisa_andmed(palgad, inimesed)
+            valik1(palgad, inimesed)
         elif valik==2:
             valik2(palgad, inimesed)
         elif valik==3:
@@ -23,6 +27,14 @@ while 1:
             valik4(palgad, inimesed)
         elif valik==5:
             valik5(palgad, inimesed)
+        elif valik==6:
+            valik6(palgad, inimesed)
+        elif valik==7:
+            valik7(palgad, inimesed)
+        elif valik==11:
+            valik11(palgad, inimesed)
+        elif valik==12:
+            valik12(palgad, inimesed)
         elif valik==20:
             break
     except ValueError:
